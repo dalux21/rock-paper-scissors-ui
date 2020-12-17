@@ -20,7 +20,6 @@ body, html{
 h1{
     font-weight:100;
     font-size:5em;
-    margin-bottom:3rem;
 }
 
 h2{
@@ -29,6 +28,7 @@ h2{
 #score{
 display:flex;
 text-align:center;
+margin-top:6rem;
 }
 
 #flex-buttons{
@@ -46,7 +46,17 @@ text-align:center;
 
 .playbtn{
     transition: transform 0.2s linear;
+    cursor:pointer;
 }
 .playbtn:hover{
     transform: translate(0, -0.5rem)
+}
+
+#last-round{
+    margin-top:3rem;
+    font-size:2rem;
+}
+
+#score{
+    font-size:2rem;
 }

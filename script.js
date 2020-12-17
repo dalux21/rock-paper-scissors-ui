@@ -14,15 +14,38 @@ let computerScore = 0
 //     alert(`You lose! Computer score: ${computerScore} - Your score: ${playerScore}`)}
 // }
 // Function that decides the winner
-const rock = document.querySelector('#rock');
+const rock = document.querySelector("#rock");
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
+const lastRoundMessage = document.querySelector('#last-round');
 
-function playRound(){
-let playerSelection = prompt(`Rock, paper or scissors? :)`,`Make your choice...`)
+
+rock.addEventListener('click', function(){
+  playRound('rock');
+
+lastRoundMessage.textContent = message
+document.querySelector('#player-score').textContent = playerScore;
+document.querySelector('#pc-score').textContent = computerScore;
+})
+paper.addEventListener('click', function(){
+  playRound('paper');
+
+lastRoundMessage.textContent = message
+document.querySelector('#player-score').textContent = playerScore;
+document.querySelector('#pc-score').textContent = computerScore;
+})
+scissors.addEventListener('click', function(){
+  playRound('scissors');
+lastRoundMessage.textContent = message
+document.querySelector('#player-score').textContent = playerScore;
+document.querySelector('#pc-score').textContent = computerScore;
+})
+
+
+function playRound(playerSelection){
 let computerSelection = computerPlay()
-playerSelection = playerSelection.toLowerCase()
 
+if (playerScore < 5 && computerScore < 5){
   if (playerSelection === `rock` || playerSelection === `paper` || playerSelection === `scissors`){
 
     if ((playerSelection == `rock` && computerSelection == `scissors`) ||
@@ -30,23 +53,31 @@ playerSelection = playerSelection.toLowerCase()
     (playerSelection == `scissors` && computerSelection == `paper`))
     {
       playerScore++
-      message = alert(`You win! ${playerSelection}  beats  ${computerSelection} | Your score: ${playerScore} - Computer score: ${computerScore}`)
+      message = `You win! ${playerSelection}  beats  ${computerSelection}`
       
     }
     else if (playerSelection == computerSelection){
-      message = alert(`It's a draw! You both chose ${playerSelection} | Your score: ${playerScore} - Computer score: ${computerScore}`);
+      message = `It's a draw! You both chose ${playerSelection}`
     }
     else {
       computerScore++
-      message = alert(`You lose! ${computerSelection}  beats  ${playerSelection} | Your score: ${playerScore} - Computer score: ${computerScore}`);
+      message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
       
     }
-  return message;
 }
-else {
-    alert(`You have to enter "rock", "paper" or "scissors"`)
-  }
 }
+else if (playerScore === 5){
+  message = 'Game Over!! You reached ' + playerScore + 'Points! You win!'
+}
+else if (computerScore === 5){
+  message = 'Game Over!! Computer reached ' + computerScore + 'Points! You lose!!' 
+}
+
+return message;
+}
+
+
+
 //helper function RANDOM
 function randomZeroToTwo(){
   return Math.floor(Math.random()*3);
