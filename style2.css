@@ -63,7 +63,7 @@ margin-top:6rem;
     font-size:2rem;
 }
 
-@media screen and (min-width: 380px){
+@media screen and (max-width: 380px){
 
     #flex-buttons{
         
