@@ -63,25 +63,28 @@ margin-top:6rem;
     font-size:2rem;
 }
 
-@media  (max-width: 768px){
+@media screen and (min-width: 380px){
 
     #flex-buttons{
-        margin:0;
-        flex-flow:column;
+        
     }
     #container{
         flex-flow:column wrap;
         border:1px solid red;
     }
     h1 {
-        font-size:30px;
+        font-size:4rem;
     }
     #score{
         margin-top:2rem;
     }
     #last-round{
         max-width:100%;
-        font-size:25px;
+        font-size:3rem;
         text-align:center;
+    }
+    #rock, #paper, #scissors{
+        font-size:3rem;
+
     }
 }
