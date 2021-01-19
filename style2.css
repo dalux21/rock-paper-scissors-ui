@@ -34,6 +34,8 @@ margin-top:6rem;
 #flex-buttons{
     margin-top:6rem;
     display:flex;
+    flex-flow:row wrap;
+
 }
 
 .card{
@@ -59,4 +61,27 @@ margin-top:6rem;
 
 #score{
     font-size:2rem;
+}
+
+@media  (max-width: 768px){
+
+    #flex-buttons{
+        margin:0;
+        flex-flow:column;
+    }
+    #container{
+        flex-flow:column wrap;
+        border:1px solid red;
+    }
+    h1 {
+        font-size:30px;
+    }
+    #score{
+        margin-top:2rem;
+    }
+    #last-round{
+        max-width:100%;
+        font-size:25px;
+        text-align:center;
+    }
 }

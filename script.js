@@ -1,19 +1,6 @@
 let playerScore = 0
 let computerScore = 0 
 
-// game();
-
-// Game function runs the playRound function 5 times and evaluate who is the winner of the game
-// function game(){  
-//   for (i=0; i<5; i++){
-//     playRound()
-// }
-//   if (playerScore > computerScore) {
-//     alert(`You win! Your score: ${playerScore} - Computer score: ${computerScore}`)}
-//   else{
-//     alert(`You lose! Computer score: ${computerScore} - Your score: ${playerScore}`)}
-// }
-// Function that decides the winner
 const rock = document.querySelector("#rock");
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
@@ -36,7 +23,6 @@ document.querySelector('#pc-score').textContent = computerScore;
 })
 scissors.addEventListener('click', function(){
   playRound('scissors');
-lastRoundMessage.textContent = message
 document.querySelector('#player-score').textContent = playerScore;
 document.querySelector('#pc-score').textContent = computerScore;
 })
@@ -67,10 +53,15 @@ if (playerScore < 5 && computerScore < 5){
 }
 }
 else if (playerScore === 5){
+
+  playAgain(lastRoundMessage)
   message = 'Game Over!! You reached ' + playerScore + 'Points! You win!'
+
 }
 else if (computerScore === 5){
   message = 'Game Over!! Computer reached ' + computerScore + 'Points! You lose!!' 
+  playAgain(lastRoundMessage)
+
 }
 
 return message;
@@ -99,3 +90,25 @@ switch(computerChoice){
     return `scissors`;
 }
 };
+
+function playAgain(lastRoundMessage){
+
+  const playAgainBtn = document.createElement('btn')
+  let container = document.getElementById('container')
+  playAgainBtn.id = "play-again-btn"
+  playAgainBtn.innerText = 'Play Again?'
+  playAgainBtn.style.fontSize = '40px'
+  playAgainBtn.style.cursor = 'pointer'
+
+  if (!container.querySelector('#play-again-btn')){
+  container.appendChild(playAgainBtn)
+  playAgainBtn.addEventListener('click', function(e){
+    playerScore = 0
+    computerScore = 0
+    lastRoundMessage.innerText = ''
+    playAgainBtn.remove()
+  })
+
+
+}
+}
